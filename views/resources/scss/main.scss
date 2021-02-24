@@ -1,0 +1,50 @@
+$purple-1: #A52297;
+$purple-2: #321950;
+$main-color: #111949;
+$pink-1: #F93E9F;
+$main-blue: #2365D2;
+$black: black;
+$white: white;
+
+$main-color-rgb: rgb(17, 25, 73);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(img/background.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: $black;
+}
+
+.main-container{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .calendar{
+        background-color: rgba($color: $main-color-rgb, $alpha: .67);
+        backdrop-filter: blur( 9.0px );
+        width: 80%;
+        height: 90vh;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        .header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

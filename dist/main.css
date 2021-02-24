@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-image: url(img/background.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: black; }
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .main-container .calendar {
+    background-color: rgba(17, 25, 73, 0.67);
+    backdrop-filter: blur(9px);
+    width: 80%;
+    height: 90vh;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; }
+    .main-container .calendar .header {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
