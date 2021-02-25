@@ -6,11 +6,11 @@ import dotenv from 'dotenv'
 const { MongoClient } = mongodb
 
 const app = express()
-const port = 3000
 const __dirname = path.resolve()
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config()
 }
+const port = process.env.PORT
 app.use(express.json());
 app.use(express.static(`${__dirname}/dist`))
 
