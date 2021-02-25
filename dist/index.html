@@ -11,7 +11,9 @@
     <div class="main-container">
         <div class="calendar">
             <div class="header">
-                Hola
+                <div class="button">Crear cosas</div>
+                <div class="button delete">destruir cosas</div>
+
             </div>
             <div class="activities">
                 
@@ -19,6 +21,48 @@
         </div>
 
     </div>
-    <script src="/reload/reload.js"></script>
+    <script>
+        const button = document.querySelector('.button');
+        const deleteButton = document.querySelector('.delete');
+        let activity, i = 0;
+        fetch('/schedule').then( async data => {
+            const activities = await data.json()
+            activity = activities
+            console.log(activity)
+        })
+        button.addEventListener('click', () => {
+            fetch(`/schedule`, {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Title: "EJEMPLO",
+                    end_hour: "10:00",
+                    start_hour: "11:00",
+                    week_day: "fryday",
+                    })
+                }).then( async data => {
+                    i += 1;
+                    const activities = await data.json()
+                    console.log(activities)
+                })
+        })
+        deleteButton.addEventListener('click', () => {
+            if(activity[i] != null){
+                fetch(`/schedule/${activity[i]._id}`, {
+                    method: "DELETE",
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    }
+                }).then( async data => {
+                    i += 1;
+                    const activities = await data.json()
+                    console.log(activities)
+                })
+            }
+        })
+
+    </script>
 </body>
 </html>

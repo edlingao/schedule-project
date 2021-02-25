@@ -18,7 +18,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+  .main-container .button {
+    background: #F93E9F;
+    color: white;
+    padding: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    user-select: none; }
   .main-container .calendar {
+    padding: 1rem;
     background-color: rgba(17, 25, 73, 0.67);
     backdrop-filter: blur(9px);
     width: 80%;

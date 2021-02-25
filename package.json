@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch views/resources/scss --output dist"
+    "scss": "node-sass --watch views/resources/scss --output dist",
+    "ts": "tsc --watch -p views/resources/js --outDir dist/"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,9 @@
   "homepage": "https://github.com/edlingao/schedule-project#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "node-sass": "^5.0.0"
+    "mongodb": "^3.6.4",
+    "node-sass": "^5.0.0",
+    "typescript": "^4.2.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",

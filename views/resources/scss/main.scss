@@ -30,8 +30,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    .button{
+        background: $pink-1;
+        color: white;
+        padding: 1rem;
+        border-radius: .5rem;
+        cursor: pointer;
+        user-select: none;
+    }
     .calendar{
+        padding: 1rem;
         background-color: rgba($color: $main-color-rgb, $alpha: .67);
         backdrop-filter: blur( 9.0px );
         width: 80%;
