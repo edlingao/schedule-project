@@ -1,41 +1,98 @@
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; }
 
 body {
-  background-image: url(img/background.jpg);
+  background: #2365d2;
+  background-image: radial-gradient(at 50% bottom, #2365D2 0%, #111949 80%);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: black; }
+  background-position: 50% 100%;
+  background-attachment: fixed; }
+  body::-webkit-scrollbar {
+    display: none; }
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  min-height: 3rem;
+  min-width: 4rem; }
+
+.warning {
+  color: #FFA800; }
+
+.success {
+  color: #00FF75; }
 
 .main-container {
   width: 100%;
   height: 100%;
+  padding: 1.875rem;
   display: flex;
-  justify-content: center;
-  align-items: center; }
-  .main-container .button {
-    background: #F93E9F;
-    color: white;
-    padding: 1rem;
-    border-radius: .5rem;
-    cursor: pointer;
-    user-select: none; }
-  .main-container .calendar {
-    padding: 1rem;
-    background-color: rgba(17, 25, 73, 0.67);
-    backdrop-filter: blur(9px);
-    width: 80%;
-    height: 90vh;
-    border-radius: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column; }
+  .main-container .day {
     display: flex;
-    justify-content: center;
-    align-items: flex-start; }
-    .main-container .calendar .header {
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1.75rem; }
+    .main-container .day .header {
+      margin-bottom: 1rem;
+      color: white; }
+      .main-container .day .header .date {
+        color: #2365D2; }
+    .main-container .day .activities {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      overflow: auto; }
+      .main-container .day .activities::-webkit-scrollbar {
+        display: none; }
+      .main-container .day .activities .activity {
+        padding: 1rem;
+        position: relative;
+        min-width: 16.875rem;
+        min-height: 9.75rem;
+        font-size: 1.125rem;
+        color: white;
+        margin-right: 1.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; }
+        .main-container .day .activities .activity .title {
+          margin-bottom: 1rem; }
+        .main-container .day .activities .activity .icon {
+          position: absolute;
+          top: 0.75rem;
+          left: 0.75rem;
+          font-size: 2.5rem; }
