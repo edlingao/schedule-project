@@ -54,60 +54,60 @@ body{
 
     display: flex;
     justify-content: flex-start;
+    align-items: stretch;
+    flex-direction: column;
+
+}
+.day{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    margin-bottom: 1.75rem;
+    .header{
+        margin-bottom: 1rem;
+        color: $white;
+        .date{
+            color: $main-blue;
+        }
+    }
+    .activities{
+        padding-left: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+.activity{
+    
+    padding: 1rem;
+    position: relative;
+    min-width: 16.875rem;
+    min-height: 9.75rem;
+    font-size: 1.125rem;
+    color: $white;
+    margin-right: 1.25rem;
+    
+    display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    .day{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-direction: column;
-
-        width: 100%;
-        margin-bottom: 1.75rem;
-        .header{
-            margin-bottom: 1rem;
-            color: $white;
-            .date{
-                color: $main-blue;
-            }
-        }
-        .activities{
-
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            width: 100%;
-            overflow: auto;
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            .activity{
-                
-                padding: 1rem;
-                position: relative;
-                min-width: 16.875rem;
-                min-height: 9.75rem;
-                font-size: 1.125rem;
-                color: $white;
-                margin-right: 1.25rem;
-                
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-
-                .title{
-                    margin-bottom: 1rem;
-                }
-                .icon{
-                    position: absolute;
-                    top: 0.75rem;
-                    left: 0.75rem;
-                    font-size: 2.5rem;
-                }
-            }
-        }
+    .title{
+        margin-bottom: 1rem;
+    }
+    .icon{
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        font-size: 2.5rem;
     }
 }
 
