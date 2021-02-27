@@ -29,7 +29,7 @@ export default class Request {
         return data
     }
 
-    static async DELETE(url, { action }){
+    static async DELETE(url){
 
         const response = await fetch(url, {
             method: "DELETE",

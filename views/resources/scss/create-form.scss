@@ -1,0 +1,163 @@
+@import './vars.scss';
+
+
+.flatpickr-calendar{
+    background: rgba($color: $main-color, $alpha: .5) !important;
+    border: 0 !important;
+    border-radius: 0.438rem !important;
+    box-shadow: none !important;
+    width: 6.688rem !important;
+    height: 3.125rem !important;
+    
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    &::before,
+    &::after{
+        border-width: .4rem !important;
+    }
+    .flatpickr-time{
+        background: transparent !important;
+        border-radius: 10rem;
+        border: 0 !important;
+        width: 100%;
+        .numInputWrapper{
+            background: transparent !important;
+            border: 0 !important;
+
+            .numInput{
+                border: 0 !important;
+                font-size: 1.125rem;
+
+                &.focus-visible{
+                    background: transparent !important;
+                }
+                &:hover{
+                    background: transparent !important;
+                }
+            }
+        }
+    }
+}
+
+.create-activity{
+    position: absolute;
+    width: 20%;
+    height: 17rem;
+    top: 20vh;
+    left: 40%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.688rem 0 1.625rem 0;
+
+    .exit{
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        font-size: 1.8rem;
+    }
+    .input{
+        
+        height: 2.188rem;
+        width: 20.375rem;
+        font-size: 1.125rem;
+        padding: 0.438rem;
+        margin-bottom: 0.813rem;
+        border: 0;
+        border-radius: 0.313rem;
+        outline: none;
+        color: $main-color;
+
+        background: rgba($color: $white, $alpha: .50);
+
+        &::placeholder{
+            color: rgba($color: $main-color, $alpha: .40);
+        }
+    }
+    .custom-select-container{
+        height: 2.188rem;
+        width: 20.375rem;
+        font-size: 1.125rem;
+        padding: 0.438rem;
+        
+        border: 0;
+        border-radius: 0.313rem;
+        
+        background: rgba($color: $white, $alpha: .50);
+
+        margin-bottom: 1.813rem;
+        // text-align: center;
+        position: relative;
+        display: flex;
+
+        &:not(.is-open) .custom-select-panel{
+            display: none;
+        }
+        .custom-select-opener{
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+            outline: none;
+            color: $main-color;
+            span{
+                width: 100%;
+            }
+        }
+        .custom-select-panel{
+            background: rgba($color: $main-color, $alpha: .5);
+            z-index: 1000;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 2.7rem;
+            border-radius: 0.875rem;
+            overflow: hidden;
+            text-align: start;
+            padding: 0.313rem 0;
+            .custom-select-option{
+                color: $white;
+                user-select: none;
+                cursor: pointer;
+                padding: 0.313rem 0.625rem;
+                &.has-focus{
+                    background: $main-color;
+                }
+            }
+        }
+    }
+    .time-section{
+        margin-bottom: 1.5rem;
+        font-size: 1.125rem;
+        .from{
+            background: none;
+            border: 0;
+            outline: none;
+            width: auto;
+            font-size: 1.125rem;
+            width: 4rem;
+            text-align: center;
+            color: $main-blue;
+        }
+    }
+
+    .save-button{
+        width: 11.875rem;
+        height: 1.8751rem;
+        border: 0;
+        border-radius: 100rem;
+        background: $main-blue;
+        color: $white;
+        outline: none;
+        cursor: pointer;
+        font-size: 1.125rem;
+    }
+
+    
+}
