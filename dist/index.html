@@ -8,21 +8,40 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="icon" type="image/svg+xml" href="/img/logo.svg" sizes="any">
     <title>Schedule</title>
 
     <script defer src="./main.js"></script>
 </head>
 <body>
+    <context-menu></context-menu>
     <div class="main-container">
-        <!-- title, icon, start_hour, end_hour, completed -->
-        <!-- <ce-activity 
-            data-title="Titulo"
-            data-icon="alarm"
-            data-start_hour="12:00"
-            data-end_hour="15:00"
-            data-complete="false"
-        >
-        </ce-activity> -->
     </div>
+    <form class="glass-container create-activity hide-item">
+        <i class="icon material-icons exit">highlight_off</i>
+        <label>
+            <input class="title input" type="text" placeholder="Escribe un titulo aqui...">
+        </label>
+        <select id="day-select" class="hide-item">
+            <option value="sunday">Domingo</option>
+            <option value="monday">Lunes</option>
+            <option value="tuesday">Martes</option>
+            <option value="wednesday">Miercoles</option>
+            <option value="thursday">Jueves</option>
+            <option value="friday">Viernes</option>
+            <option value="saturday">Sabado</option>
+        </select>
+        <div class="time-section">
+            <label >
+                De <input type="text" id="from" class="from" value="12:00">
+            </label>
+            <label >
+                A <input type="text" id="to" class="from" value="14:00">
+            </label>
+        </div>
+        <button class="save-button">Guardar</button>
+    </form>
 </body>
 </html>

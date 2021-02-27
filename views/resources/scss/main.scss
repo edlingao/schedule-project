@@ -1,15 +1,7 @@
+@import './vars.scss';
 @import './material.scss';
+@import './create-form.scss';
 
-$purple-1: #A52297;
-$purple-2: #321950;
-$main-color: #111949;
-$pink-1: #F93E9F;
-$main-blue: #2365D2;
-$black: black;
-$white: white;
-$success-green: #00FF75;
-$warning-orange: #FFA800;
-$main-color-rgb: rgb(17, 25, 73);
 
 *{
     margin: 0;
@@ -33,6 +25,46 @@ body{
         display: none;
     }
 }
+#toast-container>div{
+    box-shadow: none !important;
+}
+.hide-item{
+    display: none !important;
+}
+.context-menu{
+    position: absolute;
+    width: 13.313rem;
+    color: $white;
+    overflow: hidden;
+    z-index: 103099;
+    .option{
+        height: 1.875rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        padding: 0.313rem 0.625rem;
+        transition: .2s;
+        user-select: none;
+        
+        cursor: pointer;
+        .dark{
+            color: $black;
+        }
+        .warning{
+            color: $warning-orange;
+        }
+        .blue{
+            color: $main-blue;
+        }
+        &:hover{
+            color: $main-color;
+            background: white;
+        }
+    }
+}
+
 .glass-container{
     background: rgba($color: $white, $alpha: .5);
     backdrop-filter: blur(20px);
@@ -45,6 +77,9 @@ body{
 }
 .success{
     color: $success-green;
+}
+.error{
+    color: $error-red;
 }
 .main-container{
 
@@ -99,7 +134,21 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    &:not(:hover){
+        .delete-button{
+            opacity: 0;
+        }
+    }
+    .delete-button{
+        transition: all .25s;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        left: unset !important;
+        cursor: pointer;
+        user-select: none;
+        font-size: 1.8rem;
+    }
     .title{
         margin-bottom: 1rem;
     }
