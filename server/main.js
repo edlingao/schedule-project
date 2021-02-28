@@ -3,20 +3,24 @@ import path from 'path'
 import dotenv from 'dotenv'
 import Moment from 'moment'
 import { default as mongodb } from 'mongodb'
-import { default as ExtendMoment } from 'moment-range';
+import { default as ExtendMoment } from 'moment-range'
+import helment from 'helmet'
+
 const { MongoClient } = mongodb
 const { extendMoment } = ExtendMoment
 const moment = extendMoment(Moment);
 
 const app = express()
 const __dirname = path.resolve()
+const port = 8080
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config()
 }
-const port = process.env.PORT
+
 app.use(express.json());
 app.use(express.static(`${__dirname}/dist`))
+app.use(helment)
 
 app.get('/.well-known/pki-validation/40C952D3A11BAEC7CBF0A5325468A4BD.txt', (req, res) => {
   res.sendFile(path.join(`${__dirname}/dist/40C952D3A11BAEC7CBF0A5325468A4BD.txt`))
