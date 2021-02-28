@@ -18,6 +18,9 @@ const port = process.env.PORT
 app.use(express.json());
 app.use(express.static(`${__dirname}/dist`))
 
+app.get('/.well-known/pki-validation/40C952D3A11BAEC7CBF0A5325468A4BD.txt', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/dist/40C952D3A11BAEC7CBF0A5325468A4BD.txt`))
+})
 app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
