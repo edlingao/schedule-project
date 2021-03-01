@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
-MongoClient.connect( process.env.MONGO_URL, (err, db) => {
+MongoClient.connect( "mongodb://localhost:27017", (err, db) => {
   if(err){
     throw err
   }
