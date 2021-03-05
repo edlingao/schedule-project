@@ -93,9 +93,12 @@
     cursor: pointer;
     user-select: none;
     font-size: 1.8rem; }
+  .create-activity label {
+    width: 90%; }
+    .create-activity label .input {
+      width: 100%; }
   .create-activity .input {
     height: 2.188rem;
-    width: 20.375rem;
     font-size: 1.125rem;
     padding: 0.438rem;
     margin-bottom: 0.813rem;
@@ -108,7 +111,7 @@
       color: rgba(17, 25, 73, 0.4); }
   .create-activity .custom-select-container {
     height: 2.188rem;
-    width: 20.375rem;
+    width: 90%;
     font-size: 1.125rem;
     padding: 0.438rem;
     border: 0;
