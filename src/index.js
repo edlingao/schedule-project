@@ -117,4 +117,6 @@ if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault()
     window.deferredPrompt = e
+    const installButton = document.querySelector('.install-button')
+    installButton.classList.remove('hide-item')
 })

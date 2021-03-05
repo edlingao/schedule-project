@@ -236,6 +236,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10000;
     cursor: pointer; }
     .install-button.rotate,
     .open-menu-button.rotate {
