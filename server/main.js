@@ -20,7 +20,7 @@ app.use(express.static(`${__dirname}/dist`))
 app.use(helment())
 
 app.get('/', (req, res) => {
-  console.log(path)
+  console.log(path.join(`${__dirname}/dist/index.html`))
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
