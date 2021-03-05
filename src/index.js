@@ -103,3 +103,14 @@ if(localStorage.getItem('token') != null){
         data-register="false"
     ></ce-form>`))
 }
+window.addEventListener('appinstalled', () => {
+    console.log('instaled')
+})
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault()
+    const deferredPrompt = e
+    deferredPrompt.prompt()
+    deferredPrompt.userChoice.then( (choiceResult) => {
+        console.log( choiceResult )
+    })
+})
