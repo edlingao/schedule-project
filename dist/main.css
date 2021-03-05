@@ -213,6 +213,40 @@
 .register {
   height: 24rem; }
 
+.install-button,
+.open-menu-button {
+  display: none; }
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+  /* ... */
+  body {
+    user-select: none; }
+  .install-button,
+  .open-menu-button {
+    color: white;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #FFA800;
+    border-radius: 50rem;
+    width: 2rem;
+    height: 2rem;
+    transition: all .25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; }
+    .install-button.rotate,
+    .open-menu-button.rotate {
+      transform: rotate(45deg); }
+    .install-button i,
+    .open-menu-button i {
+      font-size: 1.7rem; }
+  .install-button {
+    top: 4rem;
+    background: #2365D2; } }
+
 @media screen and (max-width: 1000px) {
   .form {
     width: 90% !important; }
@@ -245,11 +279,12 @@ body {
   display: none !important; }
 
 .context-menu {
-  position: absolute;
+  position: fixed;
   width: 13.313rem;
   color: white;
   overflow: hidden;
-  z-index: 103099; }
+  z-index: 103099;
+  top: 1rem; }
   .context-menu .option {
     height: 1.875rem;
     width: 100%;

@@ -17,23 +17,30 @@ const moment = extendMoment(Moment)
 Notification.requestPermission()
 
 const windowEvents = () => {
+
     document.addEventListener('contextmenu', e => {
         e.preventDefault()
-        const newContextMenu = document.querySelector('.context-menu')
-        const mousePosition = Global.getPosition(e)
-        newContextMenu.classList.remove('hide-item')
-        newContextMenu.style.top = `${mousePosition.y}px`
-        newContextMenu.style.left = `${mousePosition.x}px`
-        return false
+        if(navigator.maxTouchPoints <= 0){
+            const newContextMenu = document.querySelector('.context-menu')
+            const mousePosition = Global.getPosition(e)
+            newContextMenu.classList.remove('hide-item')
+            newContextMenu.style.top = `${mousePosition.y}px`
+            newContextMenu.style.left = `${mousePosition.x}px`
+            return false
+        }
     }, false)
     document.addEventListener('click', e => {
-        const newContextMenu = document.querySelector('.context-menu')
-        newContextMenu.classList.add('hide-item')
+        if(navigator.maxTouchPoints <= 0){
+            const newContextMenu = document.querySelector('.context-menu')
+            newContextMenu.classList.add('hide-item')
+        }
     }, false)
     document.addEventListener('keyup', e => {
         if(e.key == 'Escape'){
-            const newContextMenu = document.querySelector('.context-menu')
-            newContextMenu.classList.add('hide-item')
+            if(navigator.maxTouchPoints <= 0){
+                const newContextMenu = document.querySelector('.context-menu')
+                newContextMenu.classList.add('hide-item')
+            }
         }
     }, false)
 }
@@ -103,14 +110,11 @@ if(localStorage.getItem('token') != null){
         data-register="false"
     ></ce-form>`))
 }
-window.addEventListener('appinstalled', () => {
-    console.log('instaled')
-})
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    const installButton = document.querySelector('.install-button')
+    installButton.classList.add('hide-item')
+}
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault()
-    const deferredPrompt = e
-    deferredPrompt.prompt()
-    deferredPrompt.userChoice.then( (choiceResult) => {
-        console.log( choiceResult )
-    })
+    window.deferredPrompt = e
 })

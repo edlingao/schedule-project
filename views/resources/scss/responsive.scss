@@ -1,3 +1,49 @@
+@import './vars.scss';
+
+.install-button,
+.open-menu-button{
+    display: none;
+}
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+    /* ... */
+    body{
+        user-select: none;
+    }
+    .install-button,
+    .open-menu-button{
+        color: $white;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: $warning-orange;
+        border-radius: 50rem;
+        width: 2rem;
+        height: 2rem;
+        transition: all .25s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        &.rotate{
+            transform: rotate(45deg);
+        }
+
+        i{
+            font-size: 1.7rem;
+        }
+
+
+    }
+    .install-button{
+        top: 4rem;
+        background: $main-blue;
+    }
+}
+
 @media screen and (max-width: 1000px){
     .form{
         width: 90% !important;

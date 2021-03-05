@@ -34,11 +34,12 @@ body{
     display: none !important;
 }
 .context-menu{
-    position: absolute;
+    position: fixed;
     width: 13.313rem;
     color: $white;
     overflow: hidden;
     z-index: 103099;
+    top: 1rem;
     .option{
         height: 1.875rem;
         width: 100%;
