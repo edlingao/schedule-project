@@ -1,7 +1,9 @@
 @import './vars.scss';
 @import './material.scss';
 @import './create-form.scss';
-
+@import './login-register-form.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import './responsive.scss';
 
 *{
     margin: 0;
@@ -50,13 +52,16 @@ body{
         
         cursor: pointer;
         .dark{
-            color: $black;
+            color: $main-color;
         }
         .warning{
             color: $warning-orange;
         }
         .blue{
             color: $main-blue;
+        }
+        .error{
+            color: $error-red;
         }
         &:hover{
             color: $main-color;

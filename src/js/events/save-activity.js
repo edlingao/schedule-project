@@ -29,7 +29,7 @@ export default function saveActivity(){
         form.querySelector('#to').value = '14:00'
         form.classList.add('hide-item')
         
-        const {title, icon, start_hour, end_hour, _id, week_day} = data.ops[0]
+        const {title, icon, start_hour, end_hour, _id, week_day} = data
         const day = document.querySelector(`ce-day[data-day="${week_day}"]`)
         if( day != null ){
             const today = moment().format('dddd').toLowerCase() == week_day

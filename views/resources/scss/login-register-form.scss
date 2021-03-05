@@ -1,0 +1,57 @@
+@import './vars.scss';
+
+
+.highlight{
+    color: $main-blue;
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+.form{
+    width: 25%;
+    height: 22rem;
+    margin: auto;
+    padding: 1.25rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .header,
+    .body,
+    .footer{
+        width: 100%;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        *{
+            font-weight: 300;
+        }
+        .logo{
+            margin-right: 1rem;
+        }
+    }
+    .body{
+        input{
+            width: 100%;
+        }
+    }
+    .footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .button{
+            margin-bottom: 1rem;
+        }
+        .register-text{
+            font-size: .75rem;
+            color: $white;
+        }
+    }
+}
+.register{
+    height: 24rem;
+}

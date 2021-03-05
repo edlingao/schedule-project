@@ -1,0 +1,12 @@
+@media screen and (max-width: 1000px){
+    .form{
+        width: 90% !important;
+    }
+    .create-activity{
+        width: 90% !important;
+        left: 5% !important;
+        .time-section .from{
+            width: 7.5rem !important;
+        }
+    }
+}

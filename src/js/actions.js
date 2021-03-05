@@ -1,5 +1,6 @@
 export default [
     'dark', 
     'light', 
-    'create'
+    'create',
+    'logout',
 ]

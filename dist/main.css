@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -47,6 +48,31 @@
           background: transparent !important; }
         .flatpickr-calendar .flatpickr-time .numInputWrapper .numInput:hover {
           background: transparent !important; }
+
+.glass-input {
+  height: 2.188rem;
+  width: 20.375rem;
+  font-size: 1.125rem;
+  padding: 0.438rem;
+  margin-bottom: 0.813rem;
+  border: 0;
+  border-radius: 0.313rem;
+  outline: none;
+  color: #111949;
+  background: rgba(255, 255, 255, 0.5); }
+  .glass-input::placeholder {
+    color: rgba(17, 25, 73, 0.4); }
+
+.button {
+  width: 11.875rem;
+  height: 1.8751rem;
+  border: 0;
+  border-radius: 100rem;
+  background: #2365D2;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.125rem; }
 
 .create-activity {
   position: absolute;
@@ -142,6 +168,57 @@
     cursor: pointer;
     font-size: 1.125rem; }
 
+.highlight {
+  color: #2365D2;
+  font-weight: 500 !important;
+  cursor: pointer; }
+
+.form {
+  width: 25%;
+  height: 22rem;
+  margin: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; }
+  .form .header,
+  .form .body,
+  .form .footer {
+    width: 100%; }
+  .form .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; }
+    .form .header * {
+      font-weight: 300; }
+    .form .header .logo {
+      margin-right: 1rem; }
+  .form .body input {
+    width: 100%; }
+  .form .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .form .footer .button {
+      margin-bottom: 1rem; }
+    .form .footer .register-text {
+      font-size: .75rem;
+      color: white; }
+
+.register {
+  height: 24rem; }
+
+@media screen and (max-width: 1000px) {
+  .form {
+    width: 90% !important; }
+  .create-activity {
+    width: 90% !important;
+    left: 5% !important; }
+    .create-activity .time-section .from {
+      width: 7.5rem !important; } }
+
 * {
   margin: 0;
   padding: 0;
@@ -181,11 +258,13 @@ body {
     user-select: none;
     cursor: pointer; }
     .context-menu .option .dark {
-      color: black; }
+      color: #111949; }
     .context-menu .option .warning {
       color: #FFA800; }
     .context-menu .option .blue {
       color: #2365D2; }
+    .context-menu .option .error {
+      color: #A52222; }
     .context-menu .option:hover {
       color: #111949;
       background: white; }

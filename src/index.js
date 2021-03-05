@@ -1,17 +1,21 @@
 import ContextMenu from './js/components/contextMenu'
 import Activity from './js/components/activity.js'
 import Day from './js/components/day.js'
+import Form from './js/components/login.js'
+
 import routes from './js/routes.js'
-import Moment from 'moment'
 import Request from './js/REQUEST.js'
 import Global from './js/global.js'
+
+import Moment from 'moment'
 import customSelect from 'custom-select'
 import flatPicker from 'flatpickr'
 import toastr from 'toastr'
-import { extendMoment } from 'moment-range';
-const moment = extendMoment(Moment);
-Notification.requestPermission().then( result => {
-})
+import { extendMoment } from 'moment-range'
+
+const moment = extendMoment(Moment)
+Notification.requestPermission()
+
 const windowEvents = () => {
     document.addEventListener('contextmenu', e => {
         e.preventDefault()
@@ -56,7 +60,6 @@ const main = async () => {
     windowEvents()
 }
 
-main();
 const flatPickerOptions = {
     enableTime: true,
     noCalendar: true,
@@ -71,6 +74,8 @@ flatPicker('#to', flatPickerOptions)
 customElements.define('ce-activity', Activity)
 customElements.define('ce-day', Day)
 customElements.define('context-menu', ContextMenu)
+customElements.define('ce-form', Form)
+
 
 window.toastr = toastr
 window.toastr.options = {
@@ -89,4 +94,12 @@ window.toastr.options = {
     "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
-  }
+}
+if(localStorage.getItem('token') != null){
+    main();
+}else{
+    document.body.appendChild( Global.createElement(`
+    <ce-form
+        data-register="false"
+    ></ce-form>`))
+}
