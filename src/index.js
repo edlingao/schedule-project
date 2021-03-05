@@ -110,7 +110,7 @@ if(localStorage.getItem('token') != null){
         data-register="false"
     ></ce-form>`))
 }
-if (window.matchMedia('(display-mode: standalone)').matches) {
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     const installButton = document.querySelector('.install-button')
     installButton.classList.add('hide-item')
 }
