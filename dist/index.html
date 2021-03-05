@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="icon" type="image/svg+xml" href="/img/logo.svg" sizes="any">
-
+    <link rel="manifest" href="/manifest.json">
     <script defer src="./main.js"></script>
 
     <!-- Primary Meta Tags -->
@@ -62,5 +62,11 @@
         </div>
         <button class="button save-button">Guardar</button>
     </form>
+
+    <script>
+        if( 'serviceWorker' in navigator){
+            navigator.serviceWorker.register('/service-worker.js')
+        }
+    </script>
 </body>
 </html>
