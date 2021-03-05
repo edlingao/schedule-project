@@ -8,7 +8,7 @@ import authPosts from './routes/schedule.js'
 
 
 const app = express()
-const __dirname = path.resolve()
+const __dirname = path.resolve(process.cwd(), '.')
 const port = 8080
 
 if (process.env.NODE_ENV !== 'production') {
@@ -20,7 +20,7 @@ app.use(express.static(`${__dirname}/dist`))
 app.use(helment())
 
 app.get('/', (req, res) => {
-  console.log(path.join(`${__dirname}/dist/index.html`))
+  // console.log(path.join(`${__dirname}/dist/index.html`))
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
