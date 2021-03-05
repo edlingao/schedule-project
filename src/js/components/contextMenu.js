@@ -29,7 +29,12 @@ export default class ConextMenu extends HTMLElement{
                 definitionObj['icon'] = 'check_circle'
                 definitionObj['label'] = 'Agregar actividad'
                 definitionObj['iconColor'] = 'blue'
-                break
+            break
+            case 'logout':
+                definitionObj['icon'] = 'logout'
+                definitionObj['label'] = 'Cerrar sesion'
+                definitionObj['iconColor'] = 'error'
+            break
         }
         return definitionObj
     }

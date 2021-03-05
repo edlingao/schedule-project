@@ -1,6 +1,8 @@
 export default{
-    getTasks: '/schedule',
-    postTasks: '/schedule',
-    deleteTask: (taskID) => `/schedule/${taskID}`,
-    getTaskFromDay: (dayName) => `/schedule-day/${dayName}`,
+    login: '/api/user/login',
+    register: '/api/user/register',
+    getTasks: '/api/schedule',
+    postTasks: '/api/schedule',
+    deleteTask: (taskID) => `/api/schedule/${taskID}`,
+    getTaskFromDay: (dayName) => `/api/schedule/${dayName}`,
 }

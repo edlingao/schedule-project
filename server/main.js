@@ -1,14 +1,11 @@
 import express from 'express'
 import path from 'path'
 import dotenv from 'dotenv'
-import Moment from 'moment'
-import { default as mongodb } from 'mongodb'
-import { default as ExtendMoment } from 'moment-range'
+import mongoose from 'mongoose'
 import helment from 'helmet'
+import userRoute from './routes/user.js'
+import authPosts from './routes/schedule.js'
 
-const { MongoClient } = mongodb
-const { extendMoment } = ExtendMoment
-const moment = extendMoment(Moment);
 
 const app = express()
 const __dirname = path.resolve()
@@ -26,71 +23,27 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
-MongoClient.connect( "mongodb://localhost:27017", (err, db) => {
-  if(err){
-    throw err
-  }
-  const document = db.db('schedule');
-  const schedule = document.collection('activities')
 
-  app.get('/schedule', async (req, res) => {
-    const data = await schedule.find().toArray()
-    res.json(data)
-  })
-
-  app.get('/schedule-day/:day', async (req, res) => {
-    const activitiesForTheNextDays = []
-    const today = moment().day(req.params.day).day()
-    const format = 'HH:mm'
-
-    for (let i = 0; i <= 3; i++){
-      const day = moment().day(today+i).format('dddd').toLowerCase()
-      const activities = await schedule.find({ week_day: day }).toArray()
-      activities.sort( ( activity, nextActivity) => {
-        const fisrtHour = moment(activity.end_hour, format)
-        const secondHour = moment(nextActivity.start_hour, format)
-        //activity < nextActivity
-        if(fisrtHour.isAfter(secondHour)){
-          return -1
-        }
-      }).reverse()
-      
-      activitiesForTheNextDays.push({day, activities})
+mongoose.connect(`mongodb://localhost:27017`,
+    { 
+        useNewUrlParser: true,
+        useUnifiedTopology: true.true,
+        dbName: 'schedule'
+    },
+    () => {
+        console.log('connected to db')
     }
-    res.json(activitiesForTheNextDays)
-  })
+)
 
-  app.post('/schedule', async (req, res) => {
-    const newSchedule = req.body
-    const format = 'HH:mm'
-    schedule.find({ week_day: newSchedule.week_day}).toArray().then( async (thisDayActivities) => {
-      const noOverLaps = thisDayActivities.every( ({ end_hour, start_hour}) => {
-        const requestedStart = moment(newSchedule.start_hour, format)
-        const requestedEnd = moment(newSchedule.end_hour, format)
-        const requestedRange = moment.range(requestedStart, requestedEnd, format)
-        const comparedStart = moment(start_hour, format)
-        const comparedEnd = moment(end_hour, format)
-        const comparedRange = moment.range(comparedStart, comparedEnd, format)
-        console.log(requestedRange.overlaps(comparedRange));
-        return !requestedRange.overlaps(comparedRange)
-      })
-      if(noOverLaps){
-        let response = await schedule.insertOne(newSchedule)
-        response = !response.result.ok == 1 ? {status: false} : response
-  
-        res.json(response)
-      }else{
-        res.json({status: false})
-      }
-    })
-  })
+mongoose.connect( "mongodb://localhost:27017", (err, db) => {
 
-  app.delete('/schedule/:id', async (req, res) => {
-    const response = await schedule.deleteOne({_id: new mongodb.ObjectID(req.params.id)})
-    res.json(response);
-  })
 
 })
+app.use(express.json())
+
+//Midlewares
+app.use('/api/user', userRoute)
+app.use('/api/schedule', authPosts)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
