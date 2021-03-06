@@ -1,3 +1,10 @@
+:root {
+  --title: #2365D2;
+  --activity-text: white;
+  --warning: #FFA800;
+  --success: #00FF75;
+  --error: #A52222; }
+
 .install-button,
 .open-menu-button {
   display: none; }
@@ -21,6 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10000;
     cursor: pointer; }
     .install-button.rotate,
     .open-menu-button.rotate {

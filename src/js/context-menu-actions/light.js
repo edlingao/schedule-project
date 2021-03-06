@@ -1,4 +1,4 @@
 export default () => {
-    console.log('Light theme comming soon')
-
+    document.body.classList.add('light')
+    localStorage.setItem('light', 'true')
 }
