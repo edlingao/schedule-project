@@ -1,0 +1,65 @@
+@import './vars.scss';
+
+body.light
+{
+    --title: #A52222;
+    --activity-text: #A52222; 
+    --warning: #B07400;
+    --success: #00D462;
+    background-image: $light-radial;
+    .context-menu
+    {
+        color: $error-red;
+        .option
+        {
+            &:hover
+            {
+                color: $white;
+                background: $error-red;
+                .icon
+                {
+                    color: $white;
+                }
+            }
+        }
+    }
+    .flatpickr-calendar
+    {
+        background: rgba($color: $warning-orange, $alpha: .5) !important;
+        backdrop-filter: blur(10px);
+    }
+    .create-activity
+    {
+
+        .time-section
+        {
+
+            .from{
+                color: $error-red;
+            }
+        }
+        .custom-select-opener,
+        .input
+        {
+            color: $error-red;
+        }
+        .custom-select-container
+        {
+            .custom-select-panel
+            {
+                background: rgba($color: $warning-orange, $alpha: .5);
+                .custom-select-option
+                {
+                    &.has-focus
+                    {
+                        background: $error-red;
+                    }
+                }
+            }
+        }
+    }
+    .button
+    {
+        background: $error-red;
+    }
+}

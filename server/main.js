@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 mongoose.connect(`mongodb://localhost:27017`,
     { 
         useNewUrlParser: true,
-        useUnifiedTopology: true.true,
+        useUnifiedTopology: true,
         dbName: 'schedule'
     },
     () => {

@@ -1,3 +1,4 @@
 export default () => {
-    console.log('Dark theme comming soon')
+    document.body.classList.remove('light')
+    localStorage.removeItem('light')
 }

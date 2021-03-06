@@ -17,7 +17,9 @@ const moment = extendMoment(Moment)
 Notification.requestPermission()
 
 const windowEvents = () => {
-
+    if(localStorage.getItem('light') != null && localStorage.getItem('light') == 'true'){
+        document.body.classList.add('light')
+    }
     document.addEventListener('contextmenu', e => {
         e.preventDefault()
         if(navigator.maxTouchPoints <= 0){

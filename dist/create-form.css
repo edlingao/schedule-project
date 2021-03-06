@@ -1,3 +1,10 @@
+:root {
+  --title: #2365D2;
+  --activity-text: white;
+  --warning: #FFA800;
+  --success: #00FF75;
+  --error: #A52222; }
+
 .flatpickr-calendar {
   background: rgba(17, 25, 73, 0.5) !important;
   border: 0 !important;
