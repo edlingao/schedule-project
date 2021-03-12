@@ -1,7 +1,6 @@
 import Global from '../global.js'
 import moment from 'moment'
 import deleteActivity from '../events/delete-activity.js'
-
 export default class Activity extends HTMLElement{
     constructor(){
         super()
@@ -68,14 +67,16 @@ export default class Activity extends HTMLElement{
 
     paintActivity({title, icon, complete, start_hour, end_hour}){
         complete = complete == 'true'
-        return Global.createElement(
+        const activityElement = Global.createElement(
         `<div class="activity glass-container">
             <i class="material-icons icon error delete-button">delete_forever</i>
             <i class="material-icons icon ${ complete ? 'success' : 'warning'}">${icon}</i>
-            <p class="title">${title}</p>
+            <p class="title"></p>
             <p class="hour"> De <b class="from">${start_hour}</b> a <b class="from">${end_hour}</b></p>
         </div>`
         )
+        activityElement.querySelector('.title').innerText = title
+        return activityElement
     }
     
     static get observedAttributes(){

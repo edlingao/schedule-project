@@ -33,7 +33,7 @@ export default class Login extends HTMLElement {
                 toastr.success(`Registro del usuario ${name} existoso, puede iniciar sesion`)
             }
         }).catch( err => {
-            toastr.error(err)
+            toastr.error(err.message)
         })
     }
     loginEvents(){
@@ -49,7 +49,7 @@ export default class Login extends HTMLElement {
                 window.location.reload()
             }
         }).catch( err => {
-            toastr.error(err)
+            toastr.error(err.message)
         })
     }
     postButton() {
