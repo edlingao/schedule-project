@@ -33,7 +33,10 @@ const scheduleValidatiom = data => {
     const schema = Joi.object({
         title: Joi.string()
             .required(),
-    })
+        start_hour: Joi.string(),
+        end_hour: Joi.string(),
+        week_day: Joi.string(),
+    }).options({ stripUnknown: true })
     return schema.validate(data)
 }
 
