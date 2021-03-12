@@ -4,7 +4,6 @@ import Global from '../global.js'
 import toastr from 'toastr'
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-
 const moment = extendMoment(Moment);
 
 export default function saveActivity(){
@@ -21,7 +20,7 @@ export default function saveActivity(){
         week_day: dayOfTheWeek
     }}).then( data => {
         if(data.status == false){
-            toastr.error(`Este rango de horas ya esta ocupado`)
+            toastr.error(data.message)
             return
         }
         form.querySelector('.title').value = ''
@@ -72,5 +71,7 @@ export default function saveActivity(){
 
             
         }
+    }).catch( err => {
+        toastr.error(err.message)
     })
 }

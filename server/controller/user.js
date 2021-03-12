@@ -32,11 +32,11 @@ export default class UserController {
         }
         const user = await User.findOne({email})
         if(!user){
-            return res.status(400).send('Email is wrong')
+            return res.status(400).send({message: 'Email or password does not match'})
         }
         const validPass = await bcrypt.compare( password, user.password)
         if(!validPass){
-            return res.status(400).send('Invalid password')
+            return res.status(400).send({message: 'Email or password does not match'})
         }
         
         const token = jwt.sign({_id: user._id}, process.env.SECRET)

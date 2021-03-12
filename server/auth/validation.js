@@ -29,7 +29,16 @@ const loginValidation =  data => {
     return schema.validate(data)
 }
 
+const scheduleValidatiom = data => {
+    const schema = Joi.object({
+        title: Joi.string()
+            .required(),
+    })
+    return schema.validate(data)
+}
+
 export{
     registerValidation,
     loginValidation,
+    scheduleValidatiom
 }

@@ -30,7 +30,6 @@ export default class Request {
                 requestObj.password = params.password
             break
         }
-
         const response = await fetch(url, {
             method: "POST",
             headers: { 
@@ -40,7 +39,9 @@ export default class Request {
             body: JSON.stringify(requestObj)
         })
         const data = await response.json()
-
+        if(response.status != 200){
+            throw data
+        }
         return data
     }
 
