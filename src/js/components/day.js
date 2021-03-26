@@ -1,4 +1,4 @@
-import Global from "../global"
+import Global from "../global.js"
 import moment from 'moment'
 
 export default class Day extends HTMLElement {

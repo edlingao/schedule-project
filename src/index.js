@@ -1,7 +1,7 @@
-import ContextMenu from './js/components/contextMenu'
+import ContextMenu from './js/components/contextMenu.js'
 import Activity from './js/components/activity.js'
 import Day from './js/components/day.js'
-import Form from './js/components/login.js'
+import defineComponents from './js/defineComponents.js'
 
 import routes from './js/routes.js'
 import Request from './js/REQUEST.js'
@@ -83,7 +83,8 @@ flatPicker('#to', flatPickerOptions)
 customElements.define('ce-activity', Activity)
 customElements.define('ce-day', Day)
 customElements.define('context-menu', ContextMenu)
-customElements.define('ce-form', Form)
+defineComponents()
+// customElements.define('ce-form', Form)
 
 
 window.toastr = toastr
