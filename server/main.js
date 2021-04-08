@@ -21,6 +21,7 @@ app.use(helment())
 
 app.get('/', (req, res) => {
   // console.log(path.join(`${__dirname}/dist/index.html`))
+  res.header('Access-Control-Allow-Origin', '*');
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
