@@ -21,6 +21,7 @@ export default {
                     clearInterval(parseInt(activityElement.dataset.interval))
                     Global.showNotifications(`Se completo ${ title }`)
                     changeCompleted({activityElement, isCompleted})
+                    
                 }
 
             }, 1000)
