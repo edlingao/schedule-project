@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss": "node-sass views/resources/scss/main.scss --watch --output dist",
     "ts": "tsc --watch -p views/resources/js --outDir dist/main.css",
-    "prod": "webpack --watch --mode production --config webpack.config.cjs",
+    "prod": "webpack --mode production --config webpack.config.cjs",
     "watch": "webpack --watch --mode development --config webpack.config.cjs",
     "build": "webpack --mode development --config webpack.config.cjs",
     "analize": "webpack --json > analysis.json"
