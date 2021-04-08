@@ -1,10 +1,8 @@
-import saveActivity from './events/save-activity.js';
 
 export default class Global{
 
     static setEvents(){
       const exitButtons = document.querySelectorAll('.exit');
-      const saveActivityButton = document.querySelector('.save-button');
       const showContextMenuOnTabletButton = document.querySelector('.open-menu-button')        
       const installButton = document.querySelector('.install-button')
 
@@ -30,10 +28,7 @@ export default class Global{
           createAvtivityForm.classList.add('hide-item')
         })
       })
-      saveActivityButton.addEventListener('click', e => {
-        e.preventDefault()
-        saveActivity()
-      })
+
     }
 
     static showNotifications(title){

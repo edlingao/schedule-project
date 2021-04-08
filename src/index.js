@@ -1,6 +1,4 @@
-import ContextMenu from './js/components/contextMenu.js'
-import Activity from './js/components/activity/Activity.js'
-import Day from './js/components/day.js'
+// import ContextMenu from './js/components/contextMenu.js'
 import defineComponents from './js/defineComponents.js'
 
 import routes from './js/routes.js'
@@ -8,13 +6,29 @@ import Request from './js/REQUEST.js'
 import Global from './js/global.js'
 
 import Moment from 'moment'
-import { default as custom } from 'custom-select';
-import flatPicker from 'flatpickr'
 import toastr from 'toastr'
 import { extendMoment } from 'moment-range'
-const { default: customSelect } = custom 
 const moment = extendMoment(Moment)
 Notification.requestPermission()
+
+window.toastr = toastr
+window.toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
 
 const windowEvents = () => {
     if(localStorage.getItem('light') != null && localStorage.getItem('light') == 'true'){
@@ -69,42 +83,6 @@ const main = async () => {
     windowEvents()
 }
 
-const flatPickerOptions = {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
-}
-
-customSelect(document.querySelector('#day-select'))
-flatPicker('#from', flatPickerOptions)
-flatPicker('#to', flatPickerOptions)
-
-customElements.define('ce-activity', Activity)
-customElements.define('ce-day', Day)
-customElements.define('context-menu', ContextMenu)
-defineComponents()
-// customElements.define('ce-form', Form)
-
-
-window.toastr = toastr
-window.toastr.options = {
-    "closeButton": false,
-    "debug": false,
-    "newestOnTop": false,
-    "progressBar": false,
-    "positionClass": "toast-top-right",
-    "preventDuplicates": false,
-    "onclick": null,
-    "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
-}
 if(localStorage.getItem('token') != null){
     main();
 }else{
@@ -113,13 +91,17 @@ if(localStorage.getItem('token') != null){
         data-register="false"
     ></ce-form>`))
 }
+
 if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     const installButton = document.querySelector('.install-button')
     installButton.classList.add('hide-item')
 }
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault()
     window.deferredPrompt = e
     const installButton = document.querySelector('.install-button')
     installButton.classList.remove('hide-item')
 })
+
+defineComponents()

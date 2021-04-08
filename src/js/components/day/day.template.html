@@ -1,0 +1,9 @@
+<section class="day">
+    <header class="header">
+        <p class="title"> ${ today ? 'Actividades de hoy' : 'Actividades de '} <b class="date">${moment().day(day).locale('es').format('dddd DD MMMM')}</b></p>
+    </header>
+    <div class="activities"></div>
+    <div class="empty-message">
+        <p>Oh, parece que no hay nada aqui, puedes descansar.</p>
+    </div>
+</section>

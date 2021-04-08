@@ -14,6 +14,9 @@ export default class Activity extends EdsComponet{
         this.template = this.insertVariables({htmlString: template, args})
     }
 
+    static get tagName(){
+        return 'ce-activity'
+    }
 
     events() {
         const {deleteActivity, setIntervalEvent, changeCompleted, isCompleted} = events

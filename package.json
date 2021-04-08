@@ -34,7 +34,7 @@
     "bcryptjs": "^2.4.3",
     "custom-select": "^1.1.15",
     "dotenv": "^8.2.0",
-    "edscomponent": "^1.0.6",
+    "edscomponent": "^1.0.7",
     "express": "^4.17.1",
     "flatpickr": "^4.6.9",
     "helmet": "^4.4.1",

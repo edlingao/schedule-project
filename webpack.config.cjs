@@ -16,7 +16,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.styles.scss$/,
+                test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
                 "sass-to-string",

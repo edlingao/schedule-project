@@ -1,15 +1,17 @@
-import Global from "../global.js"
-import actions from '../actions.js'
-import actionsObj from '../context-menu-actions/exportActions.js'
+import template from './context.template.html'
+import events from './context.events.js'
+import EdsComponent from 'edscomponent'
+import actions from './menu-actions.js'
 
-export default class ConextMenu extends HTMLElement{
+export default class ConextMenu extends EdsComponent{
     constructor(){
-        super()
+        super('', template)
         this.classList.add('glass-container','context-menu','hide-item')
-        this.paintOptions()
+        this.insertEvents()
     }
-    connectedCallback(){
-        // console.log('Metido');
+
+    static get tagName(){
+        return 'context-menu'
     }
 
     actionDefinitions( action ){
@@ -38,20 +40,15 @@ export default class ConextMenu extends HTMLElement{
         }
         return definitionObj
     }
-    paintOptions(){
-        actions.forEach( action => {
-            const {icon, label, iconColor} = this.actionDefinitions(action)
-            const option = Global.createElement(`
-                <div class="option">
-                    <p class="label">${label}</p>
-                    <i class="material-icons icon ${iconColor}">${icon}</i>
-                </div>
-            `)
-            option.addEventListener('click', actionsObj[action])
-            this.appendChild(option)
-        })
+
+    insertAttributes(){
+        const args = {...this.dataset, actionDefinitions: this.actionDefinitions, actions}
+        this.template = this.insertVariables({htmlString: template, args})
     }
 
-    
+    insertEvents() {
+        const { optionEvents } = events
+        optionEvents({context: this})
+    }
 
 }

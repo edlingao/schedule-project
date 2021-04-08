@@ -108,6 +108,8 @@ body{
 
     width: 100%;
     margin-bottom: 1.75rem;
+
+    
     .header{
         margin-bottom: 1rem;
         color: $white;
@@ -121,8 +123,11 @@ body{
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        overflow: auto;
-        &::-webkit-scrollbar {
+        overflow-x: auto;
+        
+        scroll-behavior: smooth;
+
+         &::-webkit-scrollbar {
             display: none;
         }
     }
