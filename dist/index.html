@@ -43,31 +43,7 @@
     <context-menu></context-menu>
     <div class="main-container">
     </div>
-    <form class="glass-container create-activity hide-item">
-        <i class="icon material-icons exit">highlight_off</i>
-        <label>
-            <input class="title input" type="text" placeholder="Escribe un titulo aqui...">
-        </label>
-        <select id="day-select" class="hide-item">
-            <option value="sunday">Domingo</option>
-            <option value="monday">Lunes</option>
-            <option value="tuesday">Martes</option>
-            <option value="wednesday">Miercoles</option>
-            <option value="thursday">Jueves</option>
-            <option value="friday">Viernes</option>
-            <option value="saturday">Sabado</option>
-        </select>
-        <div class="time-section">
-            <label >
-                De <input type="text" id="from" class="from" value="12:00">
-            </label>
-            <label >
-                A <input type="text" id="to" class="from" value="14:00">
-            </label>
-        </div>
-        <button class="button save-button">Guardar</button>
-    </form>
-
+    <create-activity></create-activity>
     <script>
         if( 'serviceWorker' in navigator){
             navigator.serviceWorker.register('/service-worker.js')

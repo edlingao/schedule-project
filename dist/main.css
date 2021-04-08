@@ -414,7 +414,8 @@ body {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    overflow: auto; }
+    overflow-x: auto;
+    scroll-behavior: smooth; }
     .day .activities::-webkit-scrollbar {
       display: none; }
 
