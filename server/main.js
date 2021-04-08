@@ -22,6 +22,10 @@ app.use(helment())
 app.get('/', (req, res) => {
   // console.log(path.join(`${__dirname}/dist/index.html`))
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header('Allow', 'GET');
+
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
