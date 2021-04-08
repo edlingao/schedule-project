@@ -1,8 +1,8 @@
 ${
     (()=>{
-        let optionsTemplate = ''
+        let optionsTemplate = '';
         actions.forEach( action => {
-            const {icon, label, iconColor} = actionDefinitions(action)
+            const {icon, label, iconColor} = actionDefinitions(action);
             optionsTemplate += `
                 <div class="option"
                     data-action="${action}"
@@ -10,8 +10,8 @@ ${
                     <p class="label">${label}</p>
                     <i class="material-icons icon ${iconColor}">${icon}</i>
                 </div>`
-        })
-        return optionsTemplate
+        });
+        return optionsTemplate;
     })()
 
 }
