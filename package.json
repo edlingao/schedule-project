@@ -10,7 +10,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss": "node-sass views/resources/scss/main.scss --watch --output dist",
     "ts": "tsc --watch -p views/resources/js --outDir dist/main.css",
-    "build": "webpack --watch"
+    "prod": "webpack --watch --mode production --config webpack.config.cjs",
+    "watch": "webpack --watch --mode development --config webpack.config.cjs",
+    "build": "webpack --mode development --config webpack.config.cjs",
+    "analize": "webpack --json > analysis.json"
   },
   "repository": {
     "type": "git",
@@ -23,12 +26,15 @@
   },
   "homepage": "https://github.com/edlingao/schedule-project#readme",
   "dependencies": {
+    "@babel/core": "^7.13.14",
     "@hapi/joi": "^17.1.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
     "bcryptjs": "^2.4.3",
     "custom-select": "^1.1.15",
     "dotenv": "^8.2.0",
-    "edscomponent": "^1.0.4",
+    "edscomponent": "^1.0.6",
     "express": "^4.17.1",
     "flatpickr": "^4.6.9",
     "helmet": "^4.4.1",
@@ -48,6 +54,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7",
-    "sucrase": "^3.17.1"
+    "sucrase": "^3.17.1",
+    "webpack-node-externals": "^2.5.2"
   }
 }

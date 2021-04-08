@@ -1,13 +1,12 @@
-import path from 'path'
+const path = require('path')
 
-const __dirname = path.resolve(process.cwd(), '.')
-
-export default {
+module.exports = {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'main.js',
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -31,11 +30,14 @@ export default {
                 },
                 ],
             },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            }
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     loader: 'babel-loader'
+            // }
         ],
+    },
+    externals: {
+        // 'customSelect': 'custom-select'
     }
 }

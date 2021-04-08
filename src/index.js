@@ -1,5 +1,5 @@
 import ContextMenu from './js/components/contextMenu.js'
-import Activity from './js/components/activity.js'
+import Activity from './js/components/activity/Activity.js'
 import Day from './js/components/day.js'
 import defineComponents from './js/defineComponents.js'
 
@@ -8,11 +8,11 @@ import Request from './js/REQUEST.js'
 import Global from './js/global.js'
 
 import Moment from 'moment'
-import customSelect from 'custom-select'
+import { default as custom } from 'custom-select';
 import flatPicker from 'flatpickr'
 import toastr from 'toastr'
 import { extendMoment } from 'moment-range'
-
+const { default: customSelect } = custom 
 const moment = extendMoment(Moment)
 Notification.requestPermission()
 

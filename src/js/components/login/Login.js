@@ -6,6 +6,7 @@ export default class Login extends EdsComponet{
 
     constructor(){
         super('', Template)
+        this.insertEvents()
     }
 
     static get tagName(){
@@ -18,12 +19,14 @@ export default class Login extends EdsComponet{
 
     attributeChangedCallback(name, oldV, newV) {
         if(oldV == null ) return
+        this.insertAttributes()
         this.render()
+        this.insertEvents()
     }
 
     insertAttributes(){
         const args = {register: JSON.parse(this.dataset.register)}
-        this.template = this.insertVariables({htmlString: this.template, args})
+        this.template = this.insertVariables({htmlString: Template, args})
     }
 
     changeForm(){
@@ -33,12 +36,11 @@ export default class Login extends EdsComponet{
     insertEvents(){
         const register = JSON.parse(this.dataset.register)
         const { loginEvents, registerEvents } = events
-
         this.querySelector('.button').addEventListener('click', e =>{
             e.preventDefault()
             !register ? 
-                loginEvents() : 
-                registerEvents()
+                loginEvents(this) : 
+                registerEvents(this)
         })
 
         this.querySelector('.login-label').addEventListener('click', () => this.changeForm())
