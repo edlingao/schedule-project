@@ -132,6 +132,33 @@ body{
         }
     }
 }
+ce-activity
+{
+    .activity
+    {
+        overflow: hidden;
+        background: rgba($color: $success-light-green, $alpha: .5);
+    }
+
+    &:not([data-percentage="100"])
+    {
+        .activity
+        {
+            background: rgba($color: $white, $alpha: .5);
+            .percent
+            {
+                transition: all .25s;
+                width: 0%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba($color: $success-light-green, $alpha: .3);
+                z-index: -1;
+            }
+        }
+    }
+}
 .activity{
     
     padding: 1rem;

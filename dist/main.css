@@ -419,6 +419,22 @@ body {
     .day .activities::-webkit-scrollbar {
       display: none; }
 
+ce-activity .activity {
+  overflow: hidden;
+  background: rgba(131, 255, 189, 0.5); }
+
+ce-activity:not([data-percentage="100"]) .activity {
+  background: rgba(255, 255, 255, 0.5); }
+  ce-activity:not([data-percentage="100"]) .activity .percent {
+    transition: all .25s;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(131, 255, 189, 0.3);
+    z-index: -1; }
+
 .activity {
   padding: 1rem;
   position: relative;

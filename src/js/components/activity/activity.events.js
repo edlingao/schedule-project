@@ -9,13 +9,49 @@ import Global from '../../global.js'
  */
 
 export default {
-    setIntervalEvent: ({ activityElement, changeCompleted, isCompleted }) => {
+
+    calculatePercentageEvent: ({activityElement}) => {
+        const { start_hour, end_hour } = activityElement.dataset
+        const format = 'HH:mm'
+
+        const init = moment(start_hour, format)
+        const end = moment(end_hour, format)
+        const current = moment()
+        const total = end._d.getTime() - init._d.getTime()
+        const offset = current._d.getTime() - init._d.getTime()
+        const percent = ( offset / total )
+
+        return ( 
+            percent <= 0 ? 
+                0 :
+                percent >= 1 ? 
+                    100 :
+                    Math.round((parseFloat( percent ).toFixed(2)) * 100 ) 
+        ) 
+    },
+
+    setIntervalEvent: ({ activityElement, changeCompleted, isCompleted, calculatePercentageEvent }) => {
         const {today, complete, start_hour, end_hour, title } = activityElement.dataset
         let intervalID = activityElement.dataset.interval
-
+        if(today == 'true'){
+            const percentage = calculatePercentageEvent({activityElement})
+            if(percentage > 0){
+                activityElement.dataset.percentage = percentage
+            }
+        }
         if( today == 'true' && complete == 'false' && (activityElement.dataset.interval == null || activityElement.dataset.interval == 'undefined')){
+            let showOnce = false
             intervalID = setInterval( () => {
-            
+                
+                const percentage = calculatePercentageEvent({activityElement})
+                if(percentage > 0){
+                    activityElement.dataset.percentage = percentage
+                    if(!showOnce){
+                        showOnce = true
+                        Global.showNotifications(`Esta en curso ${ title }`)
+                    }
+                }
+
                 if( isCompleted( {start: start_hour, end: end_hour, activityElement} )){
                     // console.log({activityElement, interval: activityElement.dataset.interval})
                     clearInterval(parseInt(activityElement.dataset.interval))
