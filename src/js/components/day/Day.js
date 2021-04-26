@@ -41,6 +41,7 @@ export default class Day extends EdsComponent {
                         data-complete="${completed}"
                         data-today="${today}"
                         data-id="${_id}"
+                        data-percentage
                     >
                     </ce-activity>`)
                 )
