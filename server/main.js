@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
+app.get('/.well-known/validation/445FCAD8195112A7897BF75BBEBD3EEC.txt', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/dist/445FCAD8195112A7897BF75BBEBD3EEC.txt`))
+})
+
 
 mongoose.connect(`mongodb://localhost:27017`,
     { 
