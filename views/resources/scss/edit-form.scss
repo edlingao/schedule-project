@@ -1,0 +1,63 @@
+@import './vars.scss';
+
+.edit-activity {
+  width: 80%;
+  height: 80vh;
+  left: 10%;
+  top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.8rem;
+
+  .header {
+    width: 100%;
+    margin-bottom: 1.063rem;
+    .title {
+      font-size: 2.4rem;
+      font-weight: 300;
+    }
+    .sub-title {
+      font-size: 0.625rem;
+    }
+    .title,
+    .sub-title {
+      color: $main-color;
+    }
+  }
+
+  .main {
+    .weekday {
+      background: rgba($color: $main-color, $alpha: 0.7);
+      width: 10rem;
+      height: 3rem;
+      margin-bottom: 1rem;
+      padding: 0.6rem;
+      overflow: hidden;
+      border-radius: .3rem;
+      transition: all .25s;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      user-select: none;
+      cursor: pointer;
+
+      .name {
+        color: $white;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+      }
+
+      .icon {
+        margin-right: .5rem;
+        font-size: 1.875rem;
+      }
+      &:focus {
+        background-color: $main-color;
+      }
+    }
+  }
+}
