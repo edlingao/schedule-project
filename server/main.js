@@ -11,9 +11,9 @@ const app = express()
 const __dirname = path.resolve(process.cwd(), '.')
 const port = 8080
 
-if (process.env.NODE_ENV !== 'production') {
+// if (process.env.NODE_ENV !== 'production') {
   dotenv.config()
-}
+// }
 
 app.use(express.json());
 app.use(express.static(`${__dirname}/dist`))

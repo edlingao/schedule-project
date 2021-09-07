@@ -51,6 +51,20 @@ export default class ScheduleController{
     static async update(req, res){
 
     }
+
+    static async allScheduleDays(req, res) {
+        const activities = await Schedule.find({ owner: req.user })
+        const groupActivities = []
+        const weekDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+        weekDays.forEach(weekDay => {
+            groupActivities.push({
+                weekday: weekDay,
+                activities: activities.filter((activity) => activity['week_day'] == weekDay)
+            })
+        })
+        res.json(groupActivities)
+    }
+
     static async scheduleDays( req, res){
         const activitiesForTheNextDays = []
         const today = moment().day(req.params.day).day()
