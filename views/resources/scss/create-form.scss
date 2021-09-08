@@ -80,7 +80,9 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    
     padding: 2.688rem 0 1.625rem 0;
+    z-index: 2;
 
     .exit{
         position: absolute;

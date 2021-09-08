@@ -16,6 +16,16 @@ export default class ConextMenu extends EdsComponent{
     }
 
     insertEvents() {
+        const body = this.querySelector('.weekday')
+        body.addEventListener('click', () => {
+            const modal = document.querySelector('edit-activity')
+            const selectedItem = document.querySelector('.week-days').querySelector('.selected')
+            selectedItem != null 
+                ? selectedItem.classList.remove('selected')
+                : null
+            body.classList.add('selected')
+            modal.dataset.day = this.dataset.name
+        })
     }
 
 }

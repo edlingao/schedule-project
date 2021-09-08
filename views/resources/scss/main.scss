@@ -71,14 +71,13 @@ body{
 .hide-item{
     display: none !important;
 }
-
-
 .glass-container{
     background: rgba($color: $white, $alpha: .5);
     backdrop-filter: blur(20px);
     border-radius: 1rem;
     min-height: 3rem;
     min-width: 4rem;
+    transition: all .5s;
 }
 .warning{
     color: var(--warning);

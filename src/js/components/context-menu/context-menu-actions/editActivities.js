@@ -1,3 +1,4 @@
 export default function () {
-  console.log('Works')
+  const edit = document.querySelector('edit-activity')
+  edit.dataset.show = 'true'
 }

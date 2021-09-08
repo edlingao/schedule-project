@@ -1,16 +1,30 @@
 @import './vars.scss';
 
+edit-activity {
+  &[data-show="false"] {
+    .edit-activity {
+      opacity: 0;
+      left: -100%;
+      z-index: -1;
+    }
+  }
+}
 .edit-activity {
   width: 80%;
   height: 80vh;
   left: 10%;
   top: 5vh;
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  
   padding: 0.8rem;
+  z-index: 1;
 
+  transition: all .5s;
+  
   .header {
     width: 100%;
     margin-bottom: 1.063rem;
@@ -39,6 +53,63 @@
       height: 100%;
       background: rgba($color: $main-color, $alpha: 0.7);
       border-radius: .3rem;
+      padding: .625rem;
+
+      .list-activity {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        background-color: rgba($color: $white, $alpha: 0.7);
+        border-radius: .313rem;
+        margin-bottom: .625rem;
+        
+        padding: 0.438rem 0.625rem;
+
+        transition: all .5s;
+        cursor: pointer;
+        .title {
+          margin: 0 0.625rem;
+        }
+        .title,
+        .hour-range p{
+          font-size: 1.125rem;
+        }
+        .icon {
+          font-size: 1.5rem;
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .hour-range {
+          margin-left: auto;
+          i {
+            transition: all .5s;
+            color: $main-blue;
+            font-style: normal;
+          }
+        }
+        .edit-options {
+          z-index: -1;
+          opacity: 0;
+        }
+
+        &:hover,
+        &:focus{
+          background: $main-color;
+          color: white;
+          .edit-options {
+            z-index: 10000;
+            opacity: 1;
+          }
+          .hour-range {
+            i {
+              color: $warning-orange;
+            }
+          }
+        }
+      }
 
     }
     .week-days {
@@ -64,7 +135,10 @@
   
         user-select: none;
         cursor: pointer;
-  
+        
+        &.selected{
+          background-color: $main-color;
+        }
         .name {
           color: $white;
           text-transform: uppercase;

@@ -5,4 +5,5 @@ export default{
     postTasks: '/api/schedule',
     deleteTask: (taskID) => `/api/schedule/${taskID}`,
     getTaskFromDay: (dayName) => `/api/schedule/${dayName}`,
+    getAllTasks: `/api/schedule/actvities`
 }
