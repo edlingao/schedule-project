@@ -1,15 +1,14 @@
 import template from './editActivity.template.html'
 import events from './editActivity.events.js'
 import EdsComponent from 'edscomponent'
-
-import REQUEST from '../../REQUEST.js'
-import routes from '../../routes.js'
 export default class EditActivity extends EdsComponent{
     constructor(){
         super('', template)
         this.insertEvents()
         this.activities = []
         this.allActivities = []
+        this.selectedDay = 'sunday'
+        this.weekdays = []
     }
 
     static get tagName(){
@@ -19,25 +18,16 @@ export default class EditActivity extends EdsComponent{
     static get observedAttributes() {
         return ['data-show', 'data-day']
     }
+
     attributeChangedCallback(name, oldValue, newValue) {
         switch(name) {
             case 'data-show':
-                if(newValue == 'true') {
-                    REQUEST.GET(routes.getAllTasks).then(data => {
-                        this.allActivities = data
-                        this.activities = this.allActivities.find(({weekday}) => weekday == 'sunday').activities
-                        this.completeRender()
-                    })
-                }
+                this.selectedDay = 'sunday'
+                // this.completeRender()
                 break
             case 'data-day':
-                if(oldValue != null) {
-                    REQUEST.GET(routes.getAllTasks).then(data => {
-                        this.allActivities = data
-                        this.activities = this.allActivities.find(({weekday}) => weekday == this.dataset.day).activities
-                        this.completeRender()
-                    })
-                }
+                this.selectedDay = newValue
+                this.querySelector('all-activities').dataset.day = this.selectedDay
                 break
         }
     }
@@ -50,14 +40,36 @@ export default class EditActivity extends EdsComponent{
     }
 
     insertAttributes(){
-        const args = {...this.dataset, activities: this.activities != null ? this.activities : []}
+        const { checkDayStatus } = events
+        this.weekdays = checkDayStatus(this.newWeekdays())
+        const args = {
+            ...this.dataset,
+            selectedDay: this.selectedDay,
+            weekdays: this.weekdays,
+        }
         this.template = this.insertVariables({htmlString: template, args})
     }
 
     insertEvents() {
         const exitButton = this.querySelector('.exit')
-        const {exit} = events
+        const { exit } = events
         exitButton.addEventListener('click', exit)
     }
-
+    newWeekdays() {
+        return [
+            this.weekdayObj('Domingo', 'sunday'),
+            this.weekdayObj('Lunes', 'monday'),
+            this.weekdayObj('Martes', 'tuesday'),
+            this.weekdayObj('Miercoles', 'wednesday'),
+            this.weekdayObj('Jueves', 'thursday'),
+            this.weekdayObj('Viernes', 'friday'),
+            this.weekdayObj('Sabado', 'saturday'),
+        ]
+    }
+    weekdayObj(name, value) {
+        return {
+            name,
+            value,
+        }
+    }
 }

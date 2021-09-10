@@ -6,6 +6,7 @@ import Day from './day/Day.js'
 import Edit from './edit-activities/EditActivity.js'
 import Weekday from './week-day/Weekday.js'
 import ListActivity from './list-activity/Activity.js'
+import Activities from './activities/Activities.js'
 
 export default [
     Login,
@@ -15,5 +16,6 @@ export default [
     Day,
     Edit,
     Weekday,
-    ListActivity
+    ListActivity,
+    Activities,
 ]

@@ -1,0 +1,14 @@
+  ${ activities.map(({
+      _id: id,
+      end_hour: end,
+      start_hour: start,
+      title
+  }) => `
+    <list-activity
+        data-id="${id}"
+        data-status="true"
+        data-title="${title}"
+        data-start="${start}"
+        data-end="${end}"
+    ></list-activity>
+  `).join('') }

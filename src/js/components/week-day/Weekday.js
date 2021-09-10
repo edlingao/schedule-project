@@ -24,7 +24,7 @@ export default class ConextMenu extends EdsComponent{
                 ? selectedItem.classList.remove('selected')
                 : null
             body.classList.add('selected')
-            modal.dataset.day = this.dataset.name
+            modal.dataset.day = this.dataset.value
         })
     }
 

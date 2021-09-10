@@ -1,34 +1,22 @@
 <div class="glass-container edit-activity">
     <i class="icon material-icons exit">highlight_off</i>
     <header class="header">
-        <h1 class="title">Activity week</h1>
-        <p class="sub-title">Click a day to see all your activities from that specific day</p>
+        <h1 class="title">Actividades semanales</h1>
+        <p class="sub-title">Selecciona un dia para ver sus actividades</p>
     </header>
     <main class="main">
         <div class="week-days">
-            <week-day data-name="sunday" data-status="true"></week-day>
-            <week-day data-name="monday" data-status="true"></week-day>
-            <week-day data-name="tuesday" data-status="true"></week-day>
-            <week-day data-name="wednesday" data-status="true"></week-day>
-            <week-day data-name="thursday"></week-day>
-            <week-day data-name="friday"></week-day>
-            <week-day data-name="saturday"></week-day>
+            ${weekdays.map(({name, value, status}) => `
+                <week-day 
+                    data-name="${name}"
+                    data-value="${value}"
+                    ${ status ? `data-status="true"` : ''}
+                ></week-day>
+            `)}
         </div>
-        <div class="activities">
-            ${ activities.map(({
-                _id: id,
-                end_hour: end,
-                start_hour: start,
-                title
-            }) => `
-                    <list-activity
-                        data-id="${id}"
-                        data-status="true"
-                        data-title="${title}"
-                        data-start="${start}"
-                        data-end="${end}"
-                    ></list-activity>`
-                ).join('') }
-        </div>
+        <all-activities
+            class="activities"
+            data-day="${selectedDay}"
+        ></all-activities>
     </main>
 </div>

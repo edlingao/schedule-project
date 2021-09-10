@@ -17,6 +17,19 @@ export default class ConextMenu extends EdsComponent{
     }
 
     insertEvents() {
+        const { deleteActivity } = events
+        const deleteButton = this.querySelector('.delete')
+        const editButton = this.querySelector('.edit')
+        
+        deleteButton.addEventListener('click',() => {
+            deleteActivity({
+                ID: this.dataset.id,
+                activityElement: this
+            })
+        })
+        editButton.addEventListener('click', () => {
+            console.log('clicked')
+        })
     }
 
 }
