@@ -10,5 +10,7 @@
         data-title="${title}"
         data-start="${start}"
         data-end="${end}"
+        data-today="${day == moment().format("dddd").toLowerCase()}"
+        data-complete="false"
     ></list-activity>
   `).join('') }

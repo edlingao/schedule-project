@@ -31,7 +31,7 @@ export default {
     },
 
     setIntervalEvent: ({ activityElement, changeCompleted, isCompleted, calculatePercentageEvent }) => {
-        const {today, complete, start_hour, end_hour, title } = activityElement.dataset
+        const {today, complete, start_hour, end_hour, title, start, end } = activityElement.dataset
         let intervalID = activityElement.dataset.interval
         if(today == 'true'){
             const percentage = calculatePercentageEvent({activityElement})
@@ -39,7 +39,14 @@ export default {
                 activityElement.dataset.percentage = percentage
             }
         }
-        if( today == 'true' && complete == 'false' && (activityElement.dataset.interval == null || activityElement.dataset.interval == 'undefined')){
+        if( 
+            today == 'true' &&
+            complete == 'false' &&
+            (
+                activityElement.dataset.interval == null ||
+                activityElement.dataset.interval == 'undefined'
+            )
+        ){
             let showOnce = false
             intervalID = setInterval( () => {
                 
@@ -51,8 +58,11 @@ export default {
                         Global.showNotifications(`Esta en curso ${ title }`)
                     }
                 }
-
-                if( isCompleted( {start: start_hour, end: end_hour, activityElement} )){
+                if( isCompleted({
+                    start: start_hour || start,
+                    end: end_hour || end,
+                    activityElement
+                })){
                     // console.log({activityElement, interval: activityElement.dataset.interval})
                     clearInterval(parseInt(activityElement.dataset.interval))
                     Global.showNotifications(`Se completo ${ title }`)
@@ -66,9 +76,12 @@ export default {
     },
 
     changeCompleted: ({activityElement, isCompleted})=>{
-        const {start_hour, end_hour } = activityElement.dataset
+        const {start_hour, end_hour, start, end } = activityElement.dataset
 
-        if(isCompleted({activityElement, start: start_hour, end: end_hour})){
+        if(isCompleted({
+            activityElement, start: start_hour || start,
+            end: end_hour || end
+        })){
             activityElement.dataset.icon = 'check_circle'
             activityElement.dataset.complete = true
             return true
