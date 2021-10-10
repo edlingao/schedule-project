@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -19,31 +18,20 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://edlingao.me/">
+    <meta property="og:url" content="https://edlingao.me/">
     <meta property="og:title" content="My Schedule">
     <meta property="og:description" content="A small schedule designed to help me concentrate">
-    <meta property="og:image" content="http://edlingao.me/img/background.jpg">
+    <meta property="og:image" content="https://edlingao.me/img/background.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="http://edlingao.me/">
+    <meta property="twitter:url" content="https://edlingao.me/">
     <meta property="twitter:title" content="My Schedule">
     <meta property="twitter:description" content="A small schedule designed to help me concentrate">
-    <meta property="twitter:image" content="http://edlingao.me/img/background.jpg">
+    <meta property="twitter:image" content="https://edlingao.me/img/background.jpg">
 </head>
 <body>
-
-    <div class="install-button hide-item">
-        <i class="material-icons">download</i>
-    </div>
-    <div class="open-menu-button">
-        <i class="material-icons">add</i>
-    </div>
-
-    <context-menu></context-menu>
-    <div class="main-container">
-    </div>
-    <create-activity></create-activity>
+    <div id="root"></div>
     <script>
         if( 'serviceWorker' in navigator){
             navigator.serviceWorker.register('/service-worker.js')

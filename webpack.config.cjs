@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './frontend/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'main.js',
@@ -19,22 +19,27 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
-                "sass-to-string",
-                {
-                    loader: "sass-loader",
-                    options: {
-                        sassOptions: {
-                            outputStyle: "compressed",
+                    'style-loader',
+                    'css-loader', 
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true,
+
                         },
                     },
-                },
                 ],
             },
-            // {
-            //     test: /\.js$/,
-            //     exclude: /node_modules/,
-            //     loader: 'babel-loader'
-            // }
+            {
+                test:  /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['@babel/preset-react']
+                  }
+                }
+            }
         ],
     },
     externals: {
