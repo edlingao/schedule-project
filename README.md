@@ -1,3 +1,6 @@
+## THIS PROJECT WILL BE MARKED AS DEPRECATED
+## I'm moving everything into a separate repo as well as using a new front end framework
+
 ## My schedule
 
 A small schedule web-app to help you shceduling tyour time
