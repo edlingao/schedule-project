@@ -37,6 +37,11 @@ export default class ConextMenu extends EdsComponent{
                 definitionObj['label'] = 'Cerrar sesion'
                 definitionObj['iconColor'] = 'error'
             break
+            case 'edit':
+                definitionObj['icon'] = 'date_range'
+                definitionObj['label'] = 'Editar Actividades'
+                definitionObj['iconColor'] = 'dark'
+            break;
         }
         return definitionObj
     }

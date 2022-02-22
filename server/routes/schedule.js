@@ -5,9 +5,11 @@ import UserController from '../controller/user.js'
 import ScheduleController from '../controller/schedule.js'
 
 const { getAllSchedules } = UserController
-const { scheduleDays, create, destroy } = ScheduleController
+const { scheduleDays, create, destroy, allScheduleDays } = ScheduleController
 
 router.get('/', authUser , getAllSchedules );
+
+router.get('/actvities', authUser, allScheduleDays)
 
 router.get('/:day', authUser ,scheduleDays);
 

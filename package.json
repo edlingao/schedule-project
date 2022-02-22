@@ -44,7 +44,6 @@
     "moment-range": "^4.0.2",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.18",
-    "node-sass": "^5.0.0",
     "sass-loader": "^11.0.1",
     "sass-to-string": "^1.5.0",
     "toastr": "^2.1.4",
@@ -52,6 +51,7 @@
     "ws": "^7.4.3"
   },
   "devDependencies": {
+    "node-sass": "^6.0.1",
     "nodemon": "^2.0.7",
     "sucrase": "^3.17.1",
     "webpack": "^5.44.0",

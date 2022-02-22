@@ -3,6 +3,8 @@ import dark from './dark.js'
 import light from './light.js'
 import logout from './logOut.js'
 import actions from '../menu-actions.js'
+import edit from './editActivities.js'
+
 const actionsObj = {}
 const selectAction = (action) => {
     let selectedCallBack = () => {}
@@ -22,7 +24,9 @@ const selectAction = (action) => {
         case 'logout':
             selectedCallBack = logout
         break
-        
+        case 'edit':
+            selectedCallBack = edit
+        break
     }
     return selectedCallBack
 }

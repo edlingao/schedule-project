@@ -1,0 +1,22 @@
+<div class="glass-container edit-activity">
+    <i class="icon material-icons exit">highlight_off</i>
+    <header class="header">
+        <h1 class="title">Actividades semanales</h1>
+        <p class="sub-title">Selecciona un dia para ver sus actividades</p>
+    </header>
+    <main class="main">
+        <div class="week-days">
+            ${weekdays.map(({name, value, status}) => `
+                <week-day
+                    data-name="${name}"
+                    data-value="${value}"
+                    ${ status ? `data-status="true"` : ''}
+                ></week-day>
+            `).join('')}
+        </div>
+        <all-activities
+            class="activities"
+            data-day="${selectedDay}"
+        ></all-activities>
+    </main>
+</div>

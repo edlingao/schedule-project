@@ -88,7 +88,8 @@
   cursor: pointer;
   font-size: 1.125rem; }
 
-.create-activity {
+.create-activity,
+.edit-activity {
   position: absolute;
   width: 20%;
   height: 17rem;
@@ -98,8 +99,10 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  padding: 2.688rem 0 1.625rem 0; }
-  .create-activity .exit {
+  padding: 2.688rem 0 1.625rem 0;
+  z-index: 2; }
+  .create-activity .exit,
+  .edit-activity .exit {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
@@ -107,11 +110,14 @@
     cursor: pointer;
     user-select: none;
     font-size: 1.8rem; }
-  .create-activity label {
+  .create-activity label,
+  .edit-activity label {
     width: 90%; }
-    .create-activity label .input {
+    .create-activity label .input,
+    .edit-activity label .input {
       width: 100%; }
-  .create-activity .input {
+  .create-activity .input,
+  .edit-activity .input {
     height: 2.188rem;
     font-size: 1.125rem;
     padding: 0.438rem;
@@ -121,9 +127,11 @@
     outline: none;
     color: #111949;
     background: rgba(255, 255, 255, 0.5); }
-    .create-activity .input::placeholder {
+    .create-activity .input::placeholder,
+    .edit-activity .input::placeholder {
       color: rgba(17, 25, 73, 0.4); }
-  .create-activity .custom-select-container {
+  .create-activity .custom-select-container,
+  .edit-activity .custom-select-container {
     height: 2.188rem;
     width: 90%;
     font-size: 1.125rem;
@@ -134,17 +142,21 @@
     margin-bottom: 1.813rem;
     position: relative;
     display: flex; }
-    .create-activity .custom-select-container:not(.is-open) .custom-select-panel {
+    .create-activity .custom-select-container:not(.is-open) .custom-select-panel,
+    .edit-activity .custom-select-container:not(.is-open) .custom-select-panel {
       display: none; }
-    .create-activity .custom-select-container .custom-select-opener {
+    .create-activity .custom-select-container .custom-select-opener,
+    .edit-activity .custom-select-container .custom-select-opener {
       cursor: pointer;
       user-select: none;
       width: 100%;
       outline: none;
       color: #111949; }
-      .create-activity .custom-select-container .custom-select-opener span {
+      .create-activity .custom-select-container .custom-select-opener span,
+      .edit-activity .custom-select-container .custom-select-opener span {
         width: 100%; }
-    .create-activity .custom-select-container .custom-select-panel {
+    .create-activity .custom-select-container .custom-select-panel,
+    .edit-activity .custom-select-container .custom-select-panel {
       background: rgba(17, 25, 73, 0.5);
       z-index: 1000;
       position: absolute;
@@ -155,17 +167,21 @@
       overflow: hidden;
       text-align: start;
       padding: 0.313rem 0; }
-      .create-activity .custom-select-container .custom-select-panel .custom-select-option {
+      .create-activity .custom-select-container .custom-select-panel .custom-select-option,
+      .edit-activity .custom-select-container .custom-select-panel .custom-select-option {
         color: white;
         user-select: none;
         cursor: pointer;
         padding: 0.313rem 0.625rem; }
-        .create-activity .custom-select-container .custom-select-panel .custom-select-option.has-focus {
+        .create-activity .custom-select-container .custom-select-panel .custom-select-option.has-focus,
+        .edit-activity .custom-select-container .custom-select-panel .custom-select-option.has-focus {
           background: #111949; }
-  .create-activity .time-section {
+  .create-activity .time-section,
+  .edit-activity .time-section {
     margin-bottom: 1.5rem;
     font-size: 1.125rem; }
-    .create-activity .time-section .from {
+    .create-activity .time-section .from,
+    .edit-activity .time-section .from {
       background: none;
       border: 0;
       outline: none;
@@ -174,7 +190,8 @@
       width: 4rem;
       text-align: center;
       color: #2365D2; }
-  .create-activity .save-button {
+  .create-activity .save-button,
+  .edit-activity .save-button {
     width: 11.875rem;
     height: 1.8751rem;
     border: 0;
@@ -320,6 +337,127 @@ body.light {
   body.light .button {
     background: #A52222; }
 
+:root {
+  --title: #2365D2;
+  --activity-text: white;
+  --warning: #FFA800;
+  --success: #00FF75;
+  --error: #A52222; }
+
+edit-activity[data-show="false"] .edit-activity {
+  opacity: 0;
+  left: -100%;
+  z-index: -1; }
+
+.edit-activity {
+  width: 80%;
+  height: 80vh;
+  left: 10%;
+  top: 5vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 90%;
+  padding: 0.8rem;
+  z-index: 1;
+  transition: all .5s; }
+  .edit-activity .header {
+    width: 100%;
+    margin-bottom: 1.063rem; }
+    .edit-activity .header .title {
+      font-size: 2.4rem;
+      font-weight: 300; }
+    .edit-activity .header .sub-title {
+      font-size: 0.625rem; }
+    .edit-activity .header .title,
+    .edit-activity .header .sub-title {
+      color: #111949; }
+  .edit-activity .main {
+    display: grid;
+    grid-template-columns: 1fr 90%;
+    grid-template-rows: 1fr;
+    grid-column-gap: 1rem;
+    width: 100%;
+    height: 100%; }
+    .edit-activity .main .activities {
+      width: 100%;
+      height: 100%;
+      background: rgba(17, 25, 73, 0.7);
+      border-radius: .3rem;
+      padding: .625rem;
+      overflow: auto; }
+      .edit-activity .main .activities::-webkit-scrollbar {
+        display: none; }
+      .edit-activity .main .activities .list-activity {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: .313rem;
+        margin-bottom: .625rem;
+        padding: 0.438rem 0.625rem;
+        transition: all .5s;
+        cursor: pointer; }
+        .edit-activity .main .activities .list-activity .title {
+          margin: 0 0.625rem; }
+        .edit-activity .main .activities .list-activity .title,
+        .edit-activity .main .activities .list-activity .hour-range p {
+          font-size: 1.125rem; }
+        .edit-activity .main .activities .list-activity .icon {
+          font-size: 1.5rem;
+          cursor: pointer;
+          user-select: none; }
+        .edit-activity .main .activities .list-activity .hour-range {
+          margin-left: auto; }
+          .edit-activity .main .activities .list-activity .hour-range i {
+            transition: all .5s;
+            color: #2365D2;
+            font-style: normal; }
+        .edit-activity .main .activities .list-activity .edit-options {
+          z-index: -1;
+          opacity: 0; }
+        .edit-activity .main .activities .list-activity:hover, .edit-activity .main .activities .list-activity:focus {
+          background: #111949;
+          color: white; }
+          .edit-activity .main .activities .list-activity:hover .edit-options, .edit-activity .main .activities .list-activity:focus .edit-options {
+            z-index: 10000;
+            opacity: 1; }
+          .edit-activity .main .activities .list-activity:hover .hour-range i, .edit-activity .main .activities .list-activity:focus .hour-range i {
+            color: #FFA800; }
+    .edit-activity .main .week-days {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      flex-direction: column; }
+      .edit-activity .main .week-days .weekday {
+        background: rgba(17, 25, 73, 0.7);
+        width: 100%;
+        max-width: 9.746rem;
+        margin-bottom: 1rem;
+        padding: 0.6rem;
+        overflow: hidden;
+        border-radius: .3rem;
+        transition: all .25s;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        user-select: none;
+        cursor: pointer; }
+        .edit-activity .main .week-days .weekday.selected {
+          background-color: #111949; }
+        .edit-activity .main .week-days .weekday .name {
+          color: white;
+          text-transform: uppercase;
+          font-size: 1.125rem; }
+        .edit-activity .main .week-days .weekday .icon {
+          margin-right: .5rem;
+          font-size: 1.875rem; }
+        .edit-activity .main .week-days .weekday:focus {
+          background-color: #111949; }
+
 * {
   margin: 0;
   padding: 0;
@@ -376,7 +514,8 @@ body {
   backdrop-filter: blur(20px);
   border-radius: 1rem;
   min-height: 3rem;
-  min-width: 4rem; }
+  min-width: 4rem;
+  transition: all .5s; }
 
 .warning {
   color: var(--warning); }

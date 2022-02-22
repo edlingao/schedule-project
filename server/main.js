@@ -11,9 +11,10 @@ const app = express()
 const __dirname = path.resolve(process.cwd(), '.')
 const port = 8080
 
-if (process.env.NODE_ENV !== 'production') {
+
+// if (process.env.NODE_ENV !== 'production') {
   dotenv.config()
-}
+// }
 
 app.use(express.json());
 app.use(express.static(`${__dirname}/dist`))
@@ -29,12 +30,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
-app.get('/.well-known/pki-validation/445FCAD8195112A7897BF75BBEBD3EEC.txt', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/dist/445FCAD8195112A7897BF75BBEBD3EEC.txt`))
-})
 
-
-mongoose.connect(`mongodb://localhost:27017`,
+mongoose.connect(process.env.MONGODB,
     { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -45,10 +42,10 @@ mongoose.connect(`mongodb://localhost:27017`,
     }
 )
 
-mongoose.connect( "mongodb://localhost:27017", (err, db) => {
+// mongoose.connect( "mongodb://localhost:27017", (err, db) => {
 
 
-})
+// })
 app.use(express.json())
 
 //Midlewares

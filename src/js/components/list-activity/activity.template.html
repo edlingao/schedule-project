@@ -1,0 +1,15 @@
+<div class="list-activity" tabindex="-1">
+  <div class="percentage"></div>
+  <i class="icon material-icons ${complete ? 'success' : 'warning'}">
+    ${complete ? 'check_circle' : 'alarm'}
+  </i>
+  <p class="title">${title}</p>
+  <div class="edit-options">
+    <i class="edit icon warning material-icons">edit</i>
+    <i class="delete icon error material-icons">remove_circle_outline</i>
+  </div>
+
+  <div class="hour-range">
+    <p>De <i class="range">${start}</i> a <i class="range">${end}</i></p>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+@import './vars.scss';
+
+edit-activity {
+  &[data-show="false"] {
+    .edit-activity {
+      opacity: 0;
+      left: -100%;
+      z-index: -1;
+    }
+  }
+}
+.edit-activity {
+  width: 80%;
+  height: 80vh;
+  left: 10%;
+  top: 5vh;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 90%;  
+  padding: 0.8rem;
+  z-index: 1;
+
+  transition: all .5s;
+  
+  .header {
+    width: 100%;
+    margin-bottom: 1.063rem;
+    .title {
+      font-size: 2.4rem;
+      font-weight: 300;
+    }
+    .sub-title {
+      font-size: 0.625rem;
+    }
+    .title,
+    .sub-title {
+      color: $main-color;
+    }
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 90%;
+    grid-template-rows: 1fr;
+    grid-column-gap: 1rem;
+    width: 100%;
+    height: 100%;
+    .activities {
+      width: 100%;
+      height: 100%;
+      background: rgba($color: $main-color, $alpha: 0.7);
+      border-radius: .3rem;
+      padding: .625rem;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .list-activity {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        background-color: rgba($color: $white, $alpha: 0.7);
+        border-radius: .313rem;
+        margin-bottom: .625rem;
+        
+        padding: 0.438rem 0.625rem;
+
+        transition: all .5s;
+        cursor: pointer;
+        .title {
+          margin: 0 0.625rem;
+        }
+        .title,
+        .hour-range p{
+          font-size: 1.125rem;
+        }
+        .icon {
+          font-size: 1.5rem;
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .hour-range {
+          margin-left: auto;
+          i {
+            transition: all .5s;
+            color: $main-blue;
+            font-style: normal;
+          }
+        }
+        .edit-options {
+          z-index: -1;
+          opacity: 0;
+        }
+
+        &:hover,
+        &:focus{
+          background: $main-color;
+          color: white;
+          .edit-options {
+            z-index: 10000;
+            opacity: 1;
+          }
+          .hour-range {
+            i {
+              color: $warning-orange;
+            }
+          }
+        }
+      }
+
+    }
+    .week-days {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      flex-direction: column;
+
+      .weekday {
+        background: rgba($color: $main-color, $alpha: 0.7);
+        width: 100%;
+        max-width: 9.746rem;
+        margin-bottom: 1rem;
+        padding: 0.6rem;
+        overflow: hidden;
+        border-radius: .3rem;
+        transition: all .25s;
+  
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+  
+        user-select: none;
+        cursor: pointer;
+        
+        &.selected{
+          background-color: $main-color;
+        }
+        .name {
+          color: $white;
+          text-transform: uppercase;
+          font-size: 1.125rem;
+        }
+  
+        .icon {
+          margin-right: .5rem;
+          font-size: 1.875rem;
+        }
+        &:focus {
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+}
